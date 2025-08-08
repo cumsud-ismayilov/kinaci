@@ -1,8 +1,10 @@
+import PrintSec from "../../components/prinntSec"
+
 function HomePage() {
   return (
-    <div>
-      HomePage
-    </div>
+    <>
+      <PrintSec/>
+    </>
   )
 }
 
