@@ -8,6 +8,7 @@ function BackGroundSec({ bgImage, bgColor, children }) {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative"
   };
   return (
     <div style={style}>

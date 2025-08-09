@@ -2,12 +2,13 @@ import BackGroundSec from "../../components/backgroundSec";
 import PrintSec from "../../components/prinntSec";
 import CommentsSec from "./commentsSec";
 import BackImg from "../../assets/backSec.webp"
+import ChoProperty from "../../components/choProperty";
 
 function Comments() {
   return (
     <div>
       <BackGroundSec bgImage={BackImg}>
-        <h1>salam</h1>
+        <ChoProperty/>
       </BackGroundSec>
       <CommentsSec />
       <PrintSec />
