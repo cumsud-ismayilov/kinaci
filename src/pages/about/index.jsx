@@ -5,6 +5,8 @@ import KinaciDesc from "./kinaciDesc";
 import InfoSec from "./infoSec";
 import OurGroup from "./ourGroup";
 import BestForYou from "./bestForYou";
+import InputSec from "./inputSec";
+import Certificate from "./cerficateSec";
 
 function About() {
   return (
@@ -19,6 +21,8 @@ function About() {
       <InfoSec/>
       <OurGroup/>
       <BestForYou/>
+      <Certificate/>
+      <InputSec/>
       <PrintSec />
     </>
   );
