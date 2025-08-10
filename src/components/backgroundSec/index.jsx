@@ -4,7 +4,7 @@ function BackGroundSec({ bgImage, bgColor, children }) {
     backgroundColor: bgColor || "transparent",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    minHeight: "368px",
+    minHeight: "360px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
