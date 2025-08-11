@@ -9,6 +9,13 @@ import Possessions from "../pages/possessions";
 import Service from "../pages/service";
 import ForSale from "../pages/forSale";
 import ForRent from "../pages/forRent";
+import FreeProperty from "../pages/freeProperty";
+import EstateInvestments from "../pages/estateInvestments";
+import StudyTour from "../pages/studytour";
+import SalesServices from "../pages/salesService";
+import OnlineTour from "../pages/onlineTour";
+import SelectionPortfolio from "../pages/selectionPortfolio";
+import Support from "../pages/support";
 
 export const routers = createBrowserRouter([
   {
@@ -50,6 +57,34 @@ export const routers = createBrowserRouter([
       {
         path: "/service",
         element: <Service />,
+      },
+      {
+        path: "/freeProperty",
+        element: <FreeProperty />,
+      },
+      {
+        path: "/estateInvestments",
+        element: <EstateInvestments />,
+      },
+      {
+        path: "/studyTour",
+        element: <StudyTour />,
+      },
+      {
+        path: "/salesServices",
+        element: <SalesServices />,
+      },
+      {
+        path: "/onlineTour",
+        element: <OnlineTour />,
+      },
+      {
+        path: "/selectionPortfolio",
+        element: <SelectionPortfolio />,
+      },
+      {
+        path: "/support",
+        element: <Support />,
       },
     ],
   },

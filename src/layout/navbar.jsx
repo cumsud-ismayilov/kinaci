@@ -17,8 +17,13 @@ import Upchewron from "../icons/upchewron";
 function Navbar() {
   const [activeMenu, setActiveMenu] = useState("/");
   const [isEmlakOpen, setIsEmlakOpen] = useState(false);
+  const [hoverMenu, setHoverMenu] = useState("/");
+  const hoverLink = (path) =>
+  `hover:text-orange-500 text-[15px] font-medium ${
+    hoverMenu === path ? "text-orange-500" : "text-[#052841]"
+  }`;
   const linkClass = (path) =>
-    `cursor-pointer h-full flex items-center hover:text-orange-500 ${
+    `cursor-pointer  h-full  flex items-center hover:text-orange-500 ${
       activeMenu === path
         ? "text-orange-500 border-b-2 border-orange-500"
         : "text-[#052841]"
@@ -58,7 +63,7 @@ function Navbar() {
       </div>
       <nav className="h-[95px] flex items-center justify-between px-44  shadow-[0_10px_10px_0_rgba(0,0,0,0.03)]">
         <div className="navRight flex items-center justify-center gap-[40px] h-full">
-          <Link to="/"> 
+          <Link to="/">
             <img
               className="w-[167px] h-[65px]"
               src={kinaciLogo}
@@ -85,11 +90,7 @@ function Navbar() {
                   setIsEmlakOpen(!isEmlakOpen);
                 }}
               >
-                Əmlak  {isEmlakOpen ? (
-               <Upchewron />
-            ) : (
-              <DownArrow/>
-            )}
+                Əmlak {isEmlakOpen ? <Upchewron /> : <DownArrow />}
               </Link>
             </li>
 
@@ -103,21 +104,72 @@ function Navbar() {
               </Link>
             </li>
 
-            <li>
+            <li className="group relative">
               <Link
                 to="/service"
                 className={`${linkClass("/service")} gap-[4px]`}
-                 onClick={() => {
+                onClick={() => {
                   setActiveMenu("/service");
                   setIsEmlakOpen(!isEmlakOpen);
                 }}
               >
-                Xidmətlərimiz {isEmlakOpen ? (
-               <Upchewron />
-            ) : (
-              <DownArrow/>
-            )}
+                Xidmətlərimiz {isEmlakOpen ? <Upchewron /> : <DownArrow />}
               </Link>
+              <ul className="flex flex-col gap-[10px] absolute w-[280px] bg-white  shadow-[0_4px_22px_0_rgba(5,40,65,0.1)] p-[1rem] top-[102%] rounded-tl-none rounded-[10px] z-9999 opacity-0 invisible group-hover: opacity-100 group-hover:visible  transition-all duration-300">
+                <li>
+                  <Link to="/freeProperty" className={`${hoverLink("/")}`} onClick={()=>setHoverMenu("/")}>
+                    Pulsuz əmlak seçimi
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/estateInvestments"
+                    className={`${hoverLink("/estateInvestments")}`} onClick={()=>setHoverMenu("/estateInvestments")}
+                  >
+                    Daşınmaz Əmlak İnvestisiyaları
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/studyTour"
+                    className={`${hoverLink("/studyTour")}`} onClick={()=>setHoverMenu("/studyTour")}
+                  >
+                    Tədris Turu
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/salesServices"
+                    className={`${hoverLink("/salesServices")}`} onClick={()=>setHoverMenu("/salesServices")}
+                  >
+                    Satış sonrası xidmət
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/onlineTour"
+                    className={`${hoverLink("/onlineTour")}`} onClick={()=>setHoverMenu("/onlineTour")}
+                  >
+                    Onlayn tur
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/selectionPortfolio"
+                    className={`${hoverLink("/selectionPortfolio")}`} onClick={()=>setHoverMenu("/selectionPortfolio")}
+                  >
+                    Portfolioların fərdi seçimi
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/support"
+                    className={`${hoverLink("/support")}`} onClick={()=>setHoverMenu("/support")}
+                  >
+                    Satınalma zamanı dəstək
+                  </Link>
+                </li>
+              </ul>
             </li>
 
             <li>
