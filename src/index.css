@@ -1,42 +1,51 @@
 @import "tailwindcss";
 
-
-
 * {
   font-family: "Poppins";
- 
 }
 
 .swiper {
   width: 100%;
   height: 100%;
- 
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background: #444;
 
   /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
- 
-  border-radius: 7px;
-  margin: 5px;
-  box-shadow: #ed6c2c6e 0 2px 5px, #ed6c2c81 0 1px 1px;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
-  height: 340px !important;
-  object-fit: contain;
+  height: 305px;
+  object-fit: cover;
 }
 
-
-.swiper-button-prev{
-    position: relative !important;
-    bottom: 0  !important;
+.swiper-button-prev {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background-color: #ffffff80 !important;
+  &::after{
+    font-size: 16px !important;
+    font-weight: 900;
+    color: #000;
+  }
+}
+.swiper-button-next {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background-color: #ffffff80 !important;
+  &::after{
+    font-size: 16px !important;
+    font-weight: 900;
+    color: #000;
+  }
 }

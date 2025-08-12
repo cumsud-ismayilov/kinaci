@@ -21,7 +21,7 @@ function About() {
       <InfoSec/>
       <OurGroup/>
       <BestForYou/>
-      <Certificate/>
+      {/* <Certificate/> */}
       <InputSec/>
       <PrintSec />
     </>
