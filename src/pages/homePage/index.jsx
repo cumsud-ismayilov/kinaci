@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import PrintSec from "../../components/prinntSec";
 import { getAllCompanies } from "../../services";
 import ProductCard from "../../components/productCard";
+import PacmanLoader from "react-spinners/PacmanLoader";
+
 
 function HomePage() {
   const [products, setproducts] = useState([]);
   const [up, setUp] = useState(false);
+   const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
       try {
@@ -15,7 +18,8 @@ function HomePage() {
         console.log(error);
       }
     })();
-  }, []);
+  }, [up]);
+
 
   return (
     <>
@@ -36,12 +40,17 @@ function HomePage() {
         </div>
         <div className="max-w-5xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[20px]">
           {products.map((product) => (
-            <ProductCard {...product} key={product.id} />
+            <ProductCard
+              {...product}
+              key={product.id}
+
+            />
           ))}
-         
         </div>
         <div className="max-w-5xl mx-auto flex items-center justify-center py-[50px]">
-           <button className="text-orange-500 border  border-orange-500 p-[5px_42px] rounded-[6px] pointer text-[13px] cursor-pointer">Daha Fazla Yükle</button>
+          <button className="text-orange-500 border  border-orange-500 p-[5px_42px] rounded-[6px] pointer text-[13px] cursor-pointern">
+            Daha Fazla Yükle
+          </button>
         </div>
       </section>
       <PrintSec />

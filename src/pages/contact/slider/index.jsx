@@ -13,6 +13,7 @@ function Slider() {
   return (
 <>
       <Swiper
+      
         slidesPerView={4}
         spaceBetween={15}
         autoplay={{
@@ -21,7 +22,7 @@ function Slider() {
         }}
         navigation={true}
         modules={[ Autoplay,Navigation]}
-        className="mySwiper"
+        className="mySwiper myCustomSwiper"
       >
         <SwiperSlide>
             <img src="https://kinaciproperty.com/assets/team1-bb1e2ace.webp" alt="" />

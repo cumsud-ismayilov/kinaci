@@ -3,7 +3,6 @@ import Envelope from "../icons/envelope";
 import Phone from "../icons/phone";
 import Include from "../icons/include";
 import Heart from "../icons/heart";
-import AzeFlag from "../icons/AzeFlag";
 import DownArrow from "../icons/downArrow";
 import kinaciLogo from "../assets/kinaciLogo.png";
 import FaceBook from "../icons/faceBook";
@@ -13,11 +12,14 @@ import Linkedin from "../icons/linkedin";
 import Youtube from "../icons/youtube";
 import { useState } from "react";
 import Upchewron from "../icons/upchewron";
+import FavoriteModal from "../components/favouriteModal";
 
-function Navbar() {
+function Navbar({favorites}) {
   const [activeMenu, setActiveMenu] = useState("/");
   const [isEmlakOpen, setIsEmlakOpen] = useState(false);
   const [hoverMenu, setHoverMenu] = useState("/");
+  const [isFav, setIsFav] = useState(false)
+
   const hoverLink = (path) =>
   `hover:text-orange-500 text-[15px] font-medium ${
     hoverMenu === path ? "text-orange-500" : "text-[#052841]"
@@ -48,17 +50,18 @@ function Navbar() {
             </Link>
           </button>
         </div>
-        <div className="headerRight flex gap-[10px]">
-          <button className="p-[6px_8px] rounded-[5px] bg-[#E21743]">
+        <div className="headerRight flex gap-[10px] relative">
+          <button className="p-[6px_8px] rounded-[5px] bg-[#E21743]"  onClick={() => {
+          setIsFav(true)
+         
+        }}>
             <Link className="text-white flex gap-[6px] justify-center items-center  text-[14px] font-semibold leading-[14px]">
-              Favoritlərim <Heart />
+              Favoritlərim ({favorites?.length || 0}) <Heart />
             </Link>
           </button>
-          <button className="bg-[#FFFFFF] p-[6px_8px] rounded-[5px]">
-            <Link className="flex justify-center gap-[4px] items-center text-[14px] font-semibold leading-[14px]">
-              <DownArrow /> <AzeFlag /> Aze
-            </Link>
-          </button>
+          {
+            isFav && <FavoriteModal setIsFav={setIsFav} />
+          }
         </div>
       </div>
       <nav className="h-[95px] flex items-center justify-between px-44  shadow-[0_10px_10px_0_rgba(0,0,0,0.03)]">

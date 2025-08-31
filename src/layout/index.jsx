@@ -3,10 +3,11 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 
 function Layout() {
+
   return (
     <>
       <Navbar />
-      <Outlet/>
+      <Outlet />
       <Footer />
     </>
   );
