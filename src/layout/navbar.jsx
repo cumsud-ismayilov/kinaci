@@ -10,15 +10,18 @@ import Instagram from "../icons/instagram";
 import Twitter from "../icons/twitter";
 import Linkedin from "../icons/linkedin";
 import Youtube from "../icons/youtube";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Upchewron from "../icons/upchewron";
 import FavoriteModal from "../components/favouriteModal";
+import { useContext } from "react";
+import { FavoriteContext } from "../context/favoriteContext";
 
-function Navbar({favorites}) {
+function Navbar() {
   const [activeMenu, setActiveMenu] = useState("/");
   const [isEmlakOpen, setIsEmlakOpen] = useState(false);
   const [hoverMenu, setHoverMenu] = useState("/");
   const [isFav, setIsFav] = useState(false)
+ const { favorites } = useContext(FavoriteContext);
 
   const hoverLink = (path) =>
   `hover:text-orange-500 text-[15px] font-medium ${
@@ -30,6 +33,7 @@ function Navbar({favorites}) {
         ? "text-orange-500 border-b-2 border-orange-500"
         : "text-[#052841]"
     }`;
+
   return (
     <header>
       <div className="navTop bg-blue-50 flex justify-between px-44 py-2.5">
@@ -56,11 +60,11 @@ function Navbar({favorites}) {
          
         }}>
             <Link className="text-white flex gap-[6px] justify-center items-center  text-[14px] font-semibold leading-[14px]">
-              Favoritlərim ({favorites?.length || 0}) <Heart />
+              Favoritlərim ({favorites.length}) <Heart />
             </Link>
           </button>
           {
-            isFav && <FavoriteModal setIsFav={setIsFav} />
+            isFav && <FavoriteModal setIsFav={setIsFav} favorites={favorites}/>
           }
         </div>
       </div>

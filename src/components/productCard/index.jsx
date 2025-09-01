@@ -1,61 +1,58 @@
+import CardSwiper from "../cardSwiper";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import Bath from "../../icons/bath";
 import HomeArea from "../../icons/homeArea";
 import Homeicons from "../../icons/homeicons";
-import CardSwiper from "../cardSwiper";
+import { useContext } from "react";
+import { FavoriteContext } from "../../context/favoriteContext";
+import { toast } from "react-toastify";
 
-function ProductCard({
-  id,
-  image1,
-  image2,
-  title,
-  location,
-  rooms,
-  size,
-  baths,
-  price,
-}) {
+
+
+function ProductCard({ id, image1, image2, title, location, rooms, size, baths, price }) {
+const { favorites, setFavorites } = useContext(FavoriteContext);
+  const isFav = favorites.some((item) => item.id === id);
+
+  const toggleFavorite = () => {
+    if (!id || !title) return; // boşu əlavə etmə
+    let updatedFavs = [...favorites];
+    if (isFav) {
+      updatedFavs = updatedFavs.filter((item) => item.id !== id);
+       toast.info(`favorilərdən çıxarıldı`);
+    } else {
+      updatedFavs.push({ id, title });
+      toast.success(`favorilərə əlavə olundu`);
+    }
+    setFavorites(updatedFavs);
+  };
+
   return (
     <div className="bg-[#fff] rounded-[7px] relative">
       <div className="h-[190px] cursor-pointer">
         <CardSwiper image1={image1} image2={image2} />
       </div>
+      <button onClick={toggleFavorite} className="absolute top-2 left-2 z-50 cursor-pointer">
+        {isFav ? <FaHeart className="w-6 h-6 text-red-500" /> : <FaRegHeart className="w-6 h-6 text-red-500" />}
+      </button>
+
       <div className="cardBody p-[12px]">
         <h6 className="text-[16px] font-semibold cursor-pointer min-h-[75px] leading-[20px]">
           {title}
         </h6>
         <p className="text-[14px] mb-[10px]">{location}</p>
         <div className="flex gap-[26px] mb-[10px]">
-          <div className="flex items-center gap-[8px]">
-            <Homeicons />
-            <p>{rooms}</p>
-          </div>
-          <div className="flex items-center gap-[8px]">
-            <HomeArea />
-            <p>{size}</p>
-          </div>
+          <div className="flex items-center gap-[8px]"><Homeicons /><p>{rooms}</p></div>
+          <div className="flex items-center gap-[8px]"><HomeArea /><p>{size}</p></div>
         </div>
         <div className="flex justify-between mb-[10px]">
-          <div className="flex items-center gap-[6px]">
-            <Bath />
-            <p>{baths}</p>
-          </div>
-          <button className="bg-[#2582C1] text-[#fff] p-[6px_9px] rounded-[6px] text-[13px]">
-            {price}
-          </button>
+          <div className="flex items-center gap-[6px]"><Bath /><p>{baths}</p></div>
+          <button className="bg-[#2582C1] text-[#fff] p-[6px_9px] rounded-[6px] text-[13px]">{price}</button>
         </div>
         <div className="flex justify-between">
-          <button className="border border-[#000] rounded-[6px] p-[5px_40px] text-[13px] pointer">
-            Hızlı iletişim
-          </button>
-          <button className="text-orange-500 border  border-orange-500 p-[5px_42px] rounded-[6px] pointer text-[13px]">
-            Detaylar
-          </button>
+          <button className="text-[#212529] border border-[#212529] rounded-[5px] p-[6px_32px] text-[15px] cursor-pointer">Hızlı iletişim</button>
+          <button className="text-[#ED6B2C] border border-[#ED6B2C] rounded-[5px] p-[6px_40px] text-[15px] cursor-pointer">Detaylar</button>
         </div>
       </div>
-      <button className="bg-[#ED6B2C] text-white rounded-[5px] text-[14px] px-[8px] py-[3px] absolute top-[35%] left-[2%] z-[99]">
-        {id}
-      </button>
-
     </div>
   );
 }
