@@ -34,7 +34,7 @@ const { favorites, setFavorites } = useContext(FavoriteContext);
       <button onClick={toggleFavorite} className="absolute top-2 left-2 z-50 cursor-pointer">
         {isFav ? <FaHeart className="w-6 h-6 text-red-500" /> : <FaRegHeart className="w-6 h-6 text-red-500" />}
       </button>
-
+       <button className="text-[#fff] border bg-[#ED6B2C] border-[#ED6B2C] rounded-[5px] text-[13px] p-[3px_8px] z-50 absolute bottom-63 left-2">{id}</button>
       <div className="cardBody p-[12px]">
         <h6 className="text-[16px] font-semibold cursor-pointer min-h-[75px] leading-[20px]">
           {title}
