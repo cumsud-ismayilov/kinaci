@@ -6,12 +6,15 @@ import Homeicons from "../../icons/homeicons";
 import { useContext } from "react";
 import { FavoriteContext } from "../../context/favoriteContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 
 
 function ProductCard({ id, image1, image2, title, location, rooms, size, baths, price }) {
 const { favorites, setFavorites } = useContext(FavoriteContext);
   const isFav = favorites.some((item) => item.id === id);
+  const navigate = useNavigate();
+
 
   const toggleFavorite = () => {
     if (!id || !title) return; // boşu əlavə etmə
@@ -28,7 +31,7 @@ const { favorites, setFavorites } = useContext(FavoriteContext);
 
   return (
     <div className="bg-[#fff] rounded-[7px] relative">
-      <div className="h-[190px] cursor-pointer">
+      <div className="h-[190px] cursor-pointer" onClick={() => navigate(`/product/${id}`)}>
         <CardSwiper image1={image1} image2={image2} />
       </div>
       <button onClick={toggleFavorite} className="absolute top-2 left-2 z-50 cursor-pointer">
@@ -50,7 +53,7 @@ const { favorites, setFavorites } = useContext(FavoriteContext);
         </div>
         <div className="flex justify-between">
           <button className="text-[#212529] border border-[#212529] rounded-[5px] p-[6px_32px] text-[15px] cursor-pointer">Hızlı iletişim</button>
-          <button className="text-[#ED6B2C] border border-[#ED6B2C] rounded-[5px] p-[6px_40px] text-[15px] cursor-pointer">Detaylar</button>
+          <button className="text-[#ED6B2C] border border-[#ED6B2C] rounded-[5px] p-[6px_40px] text-[15px] cursor-pointer" onClick={() => navigate(`/product/${id}`)}>Detaylar</button>
         </div>
       </div>
     </div>

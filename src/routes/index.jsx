@@ -16,6 +16,7 @@ import SalesServices from "../pages/salesService";
 import OnlineTour from "../pages/onlineTour";
 import SelectionPortfolio from "../pages/selectionPortfolio";
 import Support from "../pages/support";
+import ProductCardDetail from "../pages/productCardDetail";
 
 export const routers = createBrowserRouter([
   {
@@ -26,6 +27,9 @@ export const routers = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      { 
+        path: "/product/:id", 
+        element: <ProductCardDetail /> },
       {
         path: "/contact",
         element: <Contact />,

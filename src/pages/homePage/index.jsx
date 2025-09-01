@@ -5,6 +5,7 @@ import ProductCard from "../../components/productCard";
 import { useContext } from "react";
 import { FavoriteContext } from "../../context/favoriteContext";
 import InputSec from "../about/inputSec";
+import HomeSwipper from "../../components/homeSwipper";
 
 function HomePage() {
   const [products, setProducts] = useState([]);
@@ -25,6 +26,7 @@ function HomePage() {
 
   return (
     <>
+    <HomeSwipper/>
       <section className="bg-[#E9F2F9] pt-[3rem]">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 pb-[25px]">
           <div>
