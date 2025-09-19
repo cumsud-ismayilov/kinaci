@@ -8,6 +8,10 @@ import Date from "../../icons/Date";
 import Field from "../../icons/field";
 import { Link } from "react-router";
 import PrintSec from "../../components/prinntSec";
+import WhatsapIcon from "../../icons/whatsapIcon";
+import TelegramIcon from "../../icons/telegramIcon";
+import FaceBook from "../../icons/faceBook";
+import Instagram from "../../icons/instagram";
 
 function ProductCardDetail() {
   const { id } = useParams();
@@ -95,64 +99,165 @@ function ProductCardDetail() {
                 Siz bu əmlak haqqında tam məlumat və qiymət siyahısı, alış
                 prosedurunun mərhələləri, mümkün endirimlər və s. alacaqsınız
               </p>
-              <button className="text-[#dc3545] border border-[#dc3545] cursor-pointer rounded-[6px] hover:bg-[#dc3545] hover:text-[#fff] transition-all duration-300">Favoritlərə əlavə et</button>
+              <button className="text-[#dc3545] border border-[#dc3545] cursor-pointer rounded-[6px] hover:bg-[#dc3545] hover:text-[#fff] transition-all duration-300">
+                Favoritlərə əlavə et
+              </button>
             </div>
             <div className="bg-[#eaf3f9] m-[8px] p-[12px]">
-                <h4 className="text-[20px]">Kısa Bilgiler</h4>
-                <div className="grid grid-cols-3">
-                    <div className="flex flex-col gap-[13px]">
-                      <p className="text-[#ed6b2c]">{singlePro.location}</p>
-                      <p className="text-[14px]">Mülk Tipi: {singlePro.propertyType}</p>
-                      <p className="text-[14px]">Otaq: {singlePro.rooms}</p>
-                      <p className="text-[14px]">Dənizlə məsafə: {singlePro.distanceOfSea}</p>
-                    </div>
-                    <div className="flex flex-col gap-[13px]">
-                      <p className="text-[14px]">Mərtəbə: {singlePro.floor}</p>
-                      <p className="text-[14px]">Əməliyyat növü: {singlePro.transactionType}</p>
-                      <p className="tetx-[14px]">Hamam otağı: {singlePro.baths ?? " -"}</p>
-                    </div>
-                    <div className="flex flex-col gap-[13px]">
-                      <p className="text-[14px]">Vətəndaşlıq çərçivəsində: {singlePro.citizenship}</p>
-                      <p className="text-[14px]">Yatırım Amaçlı: {singlePro.investment}</p>
-                      <p className="text-[14px]">Oturma izni çərçivəsində: {singlePro.residencePermit}</p>
-                    </div>
+              <h4 className="text-[20px]">Kısa Bilgiler</h4>
+              <div className="grid grid-cols-3">
+                <div className="flex flex-col gap-[13px]">
+                  <p className="text-[#ed6b2c]">{singlePro.location}</p>
+                  <p className="text-[14px]">
+                    Mülk Tipi: {singlePro.propertyType}
+                  </p>
+                  <p className="text-[14px]">Otaq: {singlePro.rooms}</p>
+                  <p className="text-[14px]">
+                    Dənizlə məsafə: {singlePro.distanceOfSea}
+                  </p>
                 </div>
+                <div className="flex flex-col gap-[13px]">
+                  <p className="text-[14px]">Mərtəbə: {singlePro.floor}</p>
+                  <p className="text-[14px]">
+                    Əməliyyat növü: {singlePro.transactionType}
+                  </p>
+                  <p className="tetx-[14px]">
+                    Hamam otağı: {singlePro.baths ?? " -"}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[13px]">
+                  <p className="text-[14px]">
+                    Vətəndaşlıq çərçivəsində: {singlePro.citizenship}
+                  </p>
+                  <p className="text-[14px]">
+                    Yatırım Amaçlı: {singlePro.investment}
+                  </p>
+                  <p className="text-[14px]">
+                    Oturma izni çərçivəsində: {singlePro.residencePermit}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="bg-[#eaf3f9] p-[12px_12px] mt-[3rem] mb-[3rem] ml-[8px] mr-[8px]">
-                <h4 className="text-[20px]">Altyapı</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <div className="flex flex-col gap-[13px]">
-                      <p className="text-[#ed6b2c]">{singlePro.location}</p>
-                      <p className="text-[14px]">Mülk Tipi: {singlePro.propertyType}</p>
-                      <p className="text-[14px]">Otaq: {singlePro.rooms}</p>
-                      <p className="text-[14px]">Dənizlə məsafə: {singlePro.distanceOfSea}</p>
-                    </div>
-                    <div className="flex flex-col gap-[13px]">
-                      <p className="text-[14px]">Mərtəbə: {singlePro.floor}</p>
-                      <p className="text-[14px]">Əməliyyat növü: {singlePro.transactionType}</p>
-                      <p className="tetx-[14px]">Hamam otağı: {singlePro.baths ?? " -"}</p>
-                    </div>
-                    <div className="flex flex-col gap-[13px]">
-                      <p className="text-[14px]">Vətəndaşlıq çərçivəsində: {singlePro.citizenship}</p>
-                      <p className="text-[14px]">Yatırım Amaçlı: {singlePro.investment}</p>
-                      <p className="text-[14px]">Oturma izni çərçivəsində: {singlePro.residencePermit}</p>
-                    </div>
+              <h4 className="text-[20px]">Altyapı</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="flex flex-col gap-[13px]">
+                  <p className="text-[#ed6b2c]">{singlePro.location}</p>
+                  <p className="text-[14px]">
+                    Mülk Tipi: {singlePro.propertyType}
+                  </p>
+                  <p className="text-[14px]">Otaq: {singlePro.rooms}</p>
+                  <p className="text-[14px]">
+                    Dənizlə məsafə: {singlePro.distanceOfSea}
+                  </p>
                 </div>
+                <div className="flex flex-col gap-[13px]">
+                  <p className="text-[14px]">Mərtəbə: {singlePro.floor}</p>
+                  <p className="text-[14px]">
+                    Əməliyyat növü: {singlePro.transactionType}
+                  </p>
+                  <p className="tetx-[14px]">
+                    Hamam otağı: {singlePro.baths ?? " -"}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[13px]">
+                  <p className="text-[14px]">
+                    Vətəndaşlıq çərçivəsində: {singlePro.citizenship}
+                  </p>
+                  <p className="text-[14px]">
+                    Yatırım Amaçlı: {singlePro.investment}
+                  </p>
+                  <p className="text-[14px]">
+                    Oturma izni çərçivəsində: {singlePro.residencePermit}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="grid grid-cols-3 p-[16px] gap-[10px]">
-                <button className="text-[14px] p-[6px] rounded-[6px] border border-[#0dcaf0] text-[#fff] bg-[#0dcaf0]"><Link to="https://wa.me/+905441380707">Çevrimiçi Görüntüleme</Link>  </button>
-                <button className="text-[14px] p-[6px] rounded-[6px] border border-[#212529] text-[#fff] bg-[#212529]"><Link>Ücretsiz Tur</Link></button>
-                <button className="text-[14px] p-[6px] rounded-[6px] bg-[#ED6B2C] border border-[#ED6B2C] text-[#fff]">Fiyat Listesi Al</button>
+              <button className="text-[14px] p-[6px] rounded-[6px] border border-[#0dcaf0] text-[#fff] bg-[#0dcaf0]">
+                <Link to="https://wa.me/+905441380707">
+                  Çevrimiçi Görüntüleme
+                </Link>{" "}
+              </button>
+              <button className="text-[14px] p-[6px] rounded-[6px] border border-[#212529] text-[#fff] bg-[#212529]">
+                <Link>Ücretsiz Tur</Link>
+              </button>
+              <button className="text-[14px] p-[6px] rounded-[6px] bg-[#ED6B2C] border border-[#ED6B2C] text-[#fff]">
+                Fiyat Listesi Al
+              </button>
             </div>
           </div>
         </div>
         <div>
-          <button className="w-full  text-[14px] p-[6px] rounded-[6px] bg-[#ED6B2C] border border-[#ED6B2C] text-[#fff]">Əmlak ID : {singlePro.id}</button>
-          <button className="w-full m-[16px_0px] text-[14px] p-[10px] rounded-[6px] border border-[#212529] text-[#fff] bg-[#212529]">Kvadrat metr : {singlePro.squareMeter}</button>
-          <button className="w-full  text-[14px] p-[14px] rounded-[6px] border border-[#0dcaf0] text-[#fff] bg-[#0dcaf0]">{singlePro.price}</button>
+          <button className="w-full  text-[14px] p-[6px] rounded-[6px] bg-[#ED6B2C] border border-[#ED6B2C] text-[#fff] cursor-pointer">
+            Əmlak ID : {singlePro.id}
+          </button>
+          <button className="w-full m-[16px_0px] text-[14px] p-[10px] rounded-[6px] border border-[#212529] text-[#fff] bg-[#212529]">
+            Kvadrat metr : {singlePro.squareMeter}
+          </button>
+          <button className="w-full  text-[14px] p-[14px] rounded-[6px] border border-[#0dcaf0] text-[#fff] bg-[#0dcaf0]">
+            {singlePro.price}
+          </button>
+          <div className="bg-[#fff] p-[15px] m-[30px_0px]">
+            <h6 className="font-semibold text-[15px]">Sual verin</h6>
+            <div className="w-[230px] h-[250px]">
+              <img
+                src="https://kinaciproperty.com/assets/anna-666a683d.jpg"
+                className="w-full h-full rounded-[50%]"
+              />
+            </div>
+            <h6 className="font-semibold text-[15px]">Anna Drobot</h6>
+            <span className="text-[13px]">Satış Lideri</span>
+            <div className="flex gap-[13px] m-[10px_0px]">
+              <TelegramIcon />
+
+              <Link
+                to="https://wa.me/+905441380707"
+                className="flex gap-[9px] items-center"
+              >
+                <p className="bg-[#07bc0c] w-[26px] h-[26px] rounded-[3px]">
+                  <WhatsapIcon />
+                </p>
+                <span className="text-[#ed6b2c] text-[13px]">
+                  +90 (544) 138 0707
+                </span>
+              </Link>
+            </div>
+            <p className="text-[13px]">
+              E-mail :
+              <Link to="mailto:info@kinacigroup.com" className="text-[#ed6b2c]">
+                {" "}
+                info@kinacigroup.com
+              </Link>
+            </p>
+          </div>
+          <div className="bg-[#fff] p-[10px_20px] m-[10px_0px]">
+            <h6 className="font-semibold text-[15px]">Məzmunu Paylaşın</h6>
+            <div className="flex gap-[12px] mt-[8px]">
+              <TelegramIcon />
+              <Link
+                to="https://wa.me/+905441380707"
+                className="flex gap-[9px] items-center"
+              >
+                <p className="bg-[#07bc0c] w-[26px] h-[26px] rounded-[3px]">
+                  <WhatsapIcon />
+                </p>
+              </Link>
+              <Link>
+                <p>
+                  <FaceBook />
+                </p>
+              </Link>
+              <Link>
+                <p>
+                  <Instagram />
+                </p>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-      <PrintSec/>
+      <PrintSec />
     </div>
   );
 }
