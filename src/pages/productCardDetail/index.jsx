@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getProductById } from "../../services";
 import ThumbsGallery from "../../components/thumbsGallery/thumbsGallery";
@@ -12,6 +12,9 @@ import WhatsapIcon from "../../icons/whatsapIcon";
 import TelegramIcon from "../../icons/telegramIcon";
 import FaceBook from "../../icons/faceBook";
 import Instagram from "../../icons/instagram";
+import { FavoriteContext } from "../../context/favoriteContext";
+import { toast } from "react-toastify";
+import BackGroundSec from "../../components/backgroundSec";
 
 function ProductCardDetail() {
   const { id } = useParams();
@@ -36,7 +39,33 @@ function ProductCardDetail() {
   if (loading) return <p className="p-6">Yüklənir...</p>;
   if (error) return <p className="p-6 text-red-500">Xəta: {error}</p>;
 
+    const { favorites, setFavorites } = useContext(FavoriteContext);
+   const isFav = favorites.some((item) => item.id === id);
+
+
+
+  const toggleFavorite = () => {
+    if (!id || !singlePro?.title) return;
+
+    setFavorites((prevFavs) => {
+      const exists = prevFavs.some((item) => item.id === id);
+      if (exists) {
+        toast.info("Favorilərdən çıxarıldı", { toastId: "fav-removed" });
+        return prevFavs.filter((item) => item.id !== id);
+      } else {
+        toast.success("Favorilərə əlavə olundu", { toastId: "fav-added" });
+        return [...prevFavs, { id, title: singlePro.title }];
+      }
+    });
+  };
+
+
+
+
+
   return (
+<>
+    <BackGroundSec bgColor="#052841"></BackGroundSec>
     <div className="bg-[#f7f7f7] pt-[2rem]">
       <div className="max-w-5xl mx-auto  mb-[1rem]">
         <h1 className="text-[#052841] text-[23px] font-semibold">
@@ -99,8 +128,15 @@ function ProductCardDetail() {
                 Siz bu əmlak haqqında tam məlumat və qiymət siyahısı, alış
                 prosedurunun mərhələləri, mümkün endirimlər və s. alacaqsınız
               </p>
-              <button className="text-[#dc3545] border border-[#dc3545] cursor-pointer rounded-[6px] hover:bg-[#dc3545] hover:text-[#fff] transition-all duration-300">
-                Favoritlərə əlavə et
+              <button
+                onClick={toggleFavorite}
+                className={`text-[14px] border rounded-[6px] cursor-pointer transition-all duration-300 ${
+                  isFav
+                    ? "bg-[#dc3545] border-[#dc3545] text-white hover:opacity-80"
+                    : "text-[#dc3545] border-[#dc3545] hover:bg-[#dc3545] hover:text-white"
+                }`}
+              >
+                {isFav ? "Favorilərdən çıxar" : "Favoritlərə əlavə et"}
               </button>
             </div>
             <div className="bg-[#eaf3f9] m-[8px] p-[12px]">
@@ -186,6 +222,78 @@ function ProductCardDetail() {
                 Fiyat Listesi Al
               </button>
             </div>
+            <div className="p-[32px_8px] flex flex-col gap-[14px]">
+              <h6 className="font-semibold">Təsvir</h6>
+              <p>
+                Duis mattis laoreet neque, et ornare neque sollicitudin at.
+                Proin sagittis dolor sed mi elementum prim. Donec ve justo ante.
+                Vivamus egestas sodales est, eu rhoncus urna semper eu. natoque
+                penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Tamsayı tristique elit
+              </p>
+              <p>
+                Duis mattis laoreet neque, et ornare neque sollicitudin at.
+                Proin sagittis dolor sed mi elementum prim. Donec ve justo ante.
+                Vivamus egestas sodales est, eu rhoncus urna semper eu. natoque
+                penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Tamsayı tristique elit lobortis purus bibendum, quis dictum
+                metus mattis. Phasellus posuere felis sed eros porttitor mattis.
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#fff] mt-[14px] mb-[40px] p-[16px]">
+            <h1 className="text-[21px] text-center font-semibold">
+              Məlumat Almaq İstəyirəm
+            </h1>
+            <div className="grid grid-cols-2 gap-[10px]">
+              <form>
+                <label
+                  htmlFor="ad"
+                  className="inline-block m-[5px_0px] text-[13px]"
+                >
+                  Ad & Soyad
+                </label>
+                <input
+                  type="text"
+                  className="p-[12px] w-full border border-[#dee2e6] block  leading-1.5 rounded-[6px]"
+                />
+                <label
+                  htmlFor="e-poçt"
+                  className="inline-block m-[5px_0px] text-[13px]"
+                >
+                  E-poçt
+                </label>
+                <input
+                  type="email"
+                  className="p-[12px] w-full border border-[#dee2e6] block leading-1.5 rounded-[6px]"
+                />
+                <label
+                  htmlFor="tel"
+                  className="inline-block m-[5px_0px] text-[13px]"
+                >
+                  Telefon nömrəniz **
+                </label>
+                <input
+                  type="text"
+                  className="p-[12px] w-full border border-[#dee2e6] block leading-1.5 rounded-[6px]"
+                />
+              </form>
+              <div>
+                <label htmlFor="" className="block m-[5px_0px] text-[13px]">
+                  Mesajınız
+                </label>
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="3"
+                  className="p-[6px_12px] border border-[#dee2e6] resize-none w-full rounded-[6px] h-[208px]"
+                ></textarea>
+              </div>
+            </div>
+            <button className="mt-[20px] p-[8px] border border-[#ED6B2C] bg-[#ED6B2C] text-[#fff] w-full rounded-[6px] cursor-pointer">
+              Sorğumu göndər
+            </button>
           </div>
         </div>
         <div>
@@ -259,6 +367,7 @@ function ProductCardDetail() {
       </div>
       <PrintSec />
     </div>
+</>
   );
 }
 

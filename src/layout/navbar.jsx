@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+
 import Envelope from "../icons/envelope";
 import Phone from "../icons/phone";
 import Include from "../icons/include";
@@ -20,13 +21,13 @@ function Navbar() {
   const [activeMenu, setActiveMenu] = useState("/");
   const [isEmlakOpen, setIsEmlakOpen] = useState(false);
   const [hoverMenu, setHoverMenu] = useState("/");
-  const [isFav, setIsFav] = useState(false)
- const { favorites } = useContext(FavoriteContext);
+  const [isFav, setIsFav] = useState(false);
+  const { favorites } = useContext(FavoriteContext);
 
   const hoverLink = (path) =>
-  `hover:text-orange-500 text-[15px] font-medium ${
-    hoverMenu === path ? "text-orange-500" : "text-[#052841]"
-  }`;
+    `hover:text-orange-500 text-[15px] font-medium ${
+      hoverMenu === path ? "text-orange-500" : "text-[#052841]"
+    }`;
   const linkClass = (path) =>
     `cursor-pointer  h-full  flex items-center hover:text-orange-500 ${
       activeMenu === path
@@ -55,17 +56,14 @@ function Navbar() {
           </button>
         </div>
         <div className="headerRight flex gap-[10px] relative">
-          <button className="p-[6px_8px] rounded-[5px] bg-[#E21743]"  onClick={() => {
-          setIsFav(true)
-         
-        }}>
-            <Link className="text-white flex gap-[6px] justify-center items-center  text-[14px] font-semibold leading-[14px]">
-              Favoritlərim ({favorites.length}) <Heart />
-            </Link>
+          <button
+            className="p-[6px_8px] rounded-[5px] bg-[#E21743] text-white flex gap-[6px] justify-center items-center text-[14px] font-semibold leading-[14px]"
+            onClick={() => setIsFav(true)}
+          >
+            Favoritlərim ({favorites.length}) <Heart />
           </button>
-          {
-            isFav && <FavoriteModal setIsFav={setIsFav} favorites={favorites}/>
-          }
+
+          {isFav && <FavoriteModal setIsFav={setIsFav} favorites={favorites} />}
         </div>
       </div>
       <nav className="h-[95px] flex items-center justify-between px-44  shadow-[0_10px_10px_0_rgba(0,0,0,0.03)]">
@@ -124,14 +122,19 @@ function Navbar() {
               </Link>
               <ul className="flex flex-col gap-[10px] absolute w-[280px] bg-white  shadow-[0_4px_22px_0_rgba(5,40,65,0.1)] p-[1rem] top-[102%] rounded-tl-none rounded-[10px] z-9999 opacity-0 invisible group-hover: opacity-100 group-hover:visible  transition-all duration-300">
                 <li>
-                  <Link to="/freeProperty" className={`${hoverLink("/")}`} onClick={()=>setHoverMenu("/")}>
+                  <Link
+                    to="/freeProperty"
+                    className={`${hoverLink("/")}`}
+                    onClick={() => setHoverMenu("/")}
+                  >
                     Pulsuz əmlak seçimi
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/estateInvestments"
-                    className={`${hoverLink("/estateInvestments")}`} onClick={()=>setHoverMenu("/estateInvestments")}
+                    className={`${hoverLink("/estateInvestments")}`}
+                    onClick={() => setHoverMenu("/estateInvestments")}
                   >
                     Daşınmaz Əmlak İnvestisiyaları
                   </Link>
@@ -139,7 +142,8 @@ function Navbar() {
                 <li>
                   <Link
                     to="/studyTour"
-                    className={`${hoverLink("/studyTour")}`} onClick={()=>setHoverMenu("/studyTour")}
+                    className={`${hoverLink("/studyTour")}`}
+                    onClick={() => setHoverMenu("/studyTour")}
                   >
                     Tədris Turu
                   </Link>
@@ -147,7 +151,8 @@ function Navbar() {
                 <li>
                   <Link
                     to="/salesServices"
-                    className={`${hoverLink("/salesServices")}`} onClick={()=>setHoverMenu("/salesServices")}
+                    className={`${hoverLink("/salesServices")}`}
+                    onClick={() => setHoverMenu("/salesServices")}
                   >
                     Satış sonrası xidmət
                   </Link>
@@ -155,7 +160,8 @@ function Navbar() {
                 <li>
                   <Link
                     to="/onlineTour"
-                    className={`${hoverLink("/onlineTour")}`} onClick={()=>setHoverMenu("/onlineTour")}
+                    className={`${hoverLink("/onlineTour")}`}
+                    onClick={() => setHoverMenu("/onlineTour")}
                   >
                     Onlayn tur
                   </Link>
@@ -163,7 +169,8 @@ function Navbar() {
                 <li>
                   <Link
                     to="/selectionPortfolio"
-                    className={`${hoverLink("/selectionPortfolio")}`} onClick={()=>setHoverMenu("/selectionPortfolio")}
+                    className={`${hoverLink("/selectionPortfolio")}`}
+                    onClick={() => setHoverMenu("/selectionPortfolio")}
                   >
                     Portfolioların fərdi seçimi
                   </Link>
@@ -171,7 +178,8 @@ function Navbar() {
                 <li>
                   <Link
                     to="/support"
-                    className={`${hoverLink("/support")}`} onClick={()=>setHoverMenu("/support")}
+                    className={`${hoverLink("/support")}`}
+                    onClick={() => setHoverMenu("/support")}
                   >
                     Satınalma zamanı dəstək
                   </Link>

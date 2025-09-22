@@ -6,7 +6,8 @@ import Homeicons from "../../icons/homeicons";
 import { useContext } from "react";
 import { FavoriteContext } from "../../context/favoriteContext";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+
 
 
 
