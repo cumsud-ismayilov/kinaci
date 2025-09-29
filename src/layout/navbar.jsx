@@ -86,7 +86,7 @@ function Navbar() {
               </Link>
             </li>
 
-            <li>
+            <li className="group relative">
               <Link
                 to="/possessions"
                 className={`${linkClass("/possessions")} gap-[4px]`}
@@ -97,6 +97,36 @@ function Navbar() {
               >
                 Əmlak {isEmlakOpen ? <Upchewron /> : <DownArrow />}
               </Link>
+              <ul className="flex flex-col gap-[10px] absolute w-[280px] bg-white  shadow-[0_4px_22px_0_rgba(5,40,65,0.1)] p-[1rem] top-[102%] rounded-tl-none rounded-[10px] z-9999 opacity-0 invisible group-hover: opacity-100 group-hover:visible  transition-all duration-300">
+                <li>
+                  <Link
+                    to="/forSale"
+                    className={`${hoverLink("/")}`}
+                    onClick={() => setHoverMenu("/")}
+                  >
+                    Satılır
+                  </Link>
+
+                </li>
+                                  <li>
+                    <Link
+                      to="forRent"
+                      className={`${hoverLink("/forRent")}`}
+                      onClick={() => setHoverMenu("/forRent")}
+                    >
+                      Kirayə
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="soldPossessions"
+                      className={`${hoverLink("/soldPossessions")}`}
+                      onClick={() => setHoverMenu("/soldPossessions")}
+                    >
+                      Satılmış Əmlak
+                    </Link>
+                  </li>
+              </ul>
             </li>
 
             <li>

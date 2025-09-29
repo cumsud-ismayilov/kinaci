@@ -17,6 +17,7 @@ import OnlineTour from "../pages/onlineTour";
 import SelectionPortfolio from "../pages/selectionPortfolio";
 import Support from "../pages/support";
 import ProductCardDetail from "../pages/productCardDetail";
+import SoldPossessions from "../pages/soldPossesions";
 
 export const routers = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const routers = createBrowserRouter([
       {
         path: "/forRent",
         element: <ForRent />,
+      },
+      {
+        path: "/soldPossessions",
+        element: <SoldPossessions />,
       },
       {
         path: "/service",

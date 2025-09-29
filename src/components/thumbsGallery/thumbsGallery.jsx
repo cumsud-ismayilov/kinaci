@@ -26,21 +26,21 @@ export default function ThumbsGallery({singlePro}) {
       >
         <SwiperSlide>
           <img
-            src={singlePro.image1}
+            src={singlePro.images.image1}
             alt="image-1"
             className="w-full h-[450px] object-cover rounded"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image2}
+            src={singlePro.images.image2}
             alt="image-2"
             className="w-full h-[450px] object-cover rounded"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image3}
+            src={singlePro.images.image3}
             alt="image-3"
             className="w-full h-[450px] object-cover rounded"
           />
@@ -54,28 +54,28 @@ export default function ThumbsGallery({singlePro}) {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image5}
+            src={singlePro.images.image5}
             alt="image-5"
             className="w-full h-[450px] object-cover rounded"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image6}
+            src={singlePro.images.image6}
             alt="image-5"
             className="w-full h-[450px] object-cover rounded"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image7}
+            src={singlePro.images.image7}
             alt="image-5"
             className="w-full h-[450px] object-cover rounded"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image8}
+            src={singlePro.images.image8}
             alt="image-5"
             className="w-full h-[450px] object-cover rounded"
           />
@@ -95,35 +95,35 @@ export default function ThumbsGallery({singlePro}) {
       >
         <SwiperSlide>
           <img
-            src={singlePro.image1}
+            src={singlePro.images.image1}
             alt="thumb-1"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image2}
+            src={singlePro.images.image2}
             alt="thumb-2"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image3}
+            src={singlePro.images.image3}
             alt="thumb-3"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image4}
+            src={singlePro.images.image4}
             alt="thumb-4"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image5}
+            src={singlePro.images.image5}
             alt="thumb-5"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
@@ -137,14 +137,14 @@ export default function ThumbsGallery({singlePro}) {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image7}
+            src={singlePro.images.image7}
             alt="thumb-5"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image8}
+            src={singlePro.images.image8}
             alt="thumb-5"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />

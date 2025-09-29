@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function ProductCard({ id, image1, image2, title, location, rooms, size, baths, price }) {
+function ProductCard({ id, image1, image2, title, location, rooms, size, baths, price ,images}) {
 const { favorites, setFavorites } = useContext(FavoriteContext);
   const isFav = favorites.some((item) => item.id === id);
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const { favorites, setFavorites } = useContext(FavoriteContext);
   return (
     <div className="bg-[#fff] rounded-[7px] relative">
       <div className="h-[190px] cursor-pointer" onClick={() => navigate(`/product/${id}`)}>
-        <CardSwiper image1={image1} image2={image2} />
+        <CardSwiper {...images} />
       </div>
       <button onClick={toggleFavorite} className="absolute top-2 left-2 z-50 cursor-pointer">
         {isFav ? <FaHeart className="w-6 h-6 text-red-500" /> : <FaRegHeart className="w-6 h-6 text-red-500" />}
