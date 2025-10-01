@@ -40,7 +40,7 @@ function HomePage() {
         </div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[20px]">
-          {products.map((product) => (
+          {products.slice(0, 6).map((product) => (
             <ProductCard
               {...product}
               key={product.id}
@@ -66,7 +66,7 @@ function HomePage() {
         </div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[20px]">
-          {products.map((product) => (
+          {products.slice(0, 6).map((product) => (
             <ProductCard
               {...product}
               key={product.id}
@@ -92,7 +92,7 @@ function HomePage() {
         </div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[20px]">
-          {products.map((product) => (
+          {products.slice(0, 6).map((product) => (
             <ProductCard
               {...product}
               key={product.id}

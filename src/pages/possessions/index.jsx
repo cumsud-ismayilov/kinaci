@@ -5,11 +5,15 @@ import { FaThLarge, FaList } from "react-icons/fa";
 import CardGridView from "../../components/cardGridView";
 import CardListView from "../../components/cardListView";
 import { getAllCompanies } from "../../services";
+import Pagination from "../../components/pagination/pagination";
 
 function Possessions() {
   const [view, setView] = useState("grid");
   const [products, setProducts] = useState([]);
   const [up, setUp] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   useEffect(() => {
     (async () => {
@@ -22,10 +26,18 @@ function Possessions() {
     })();
   }, [up]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [products]);
+
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedData = products.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <>
       <BackGroundSec bgColor="#052841"></BackGroundSec>
-      <div className="bg-[#F7F7F7]">
+      <div className="bg-[#F7F7F7] pt-[3rem]">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 pb-[25px]">
           <h1 className="text-2xl font-bold">Türkiye'de Gayrimenkul</h1>
           <div className="flex gap-3 justify-end">
@@ -47,7 +59,16 @@ function Possessions() {
             </button>
           </div>
         </div>
-        {view === "grid" ? <CardGridView data={products} /> : <CardListView />}
+        {view === "grid" ? (
+          <CardGridView data={paginatedData} />
+        ) : (
+          <CardListView data={paginatedData} />
+        )}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
       <PrintSec />
     </>
