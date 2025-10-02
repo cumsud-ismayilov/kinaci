@@ -47,7 +47,7 @@ export default function ThumbsGallery({singlePro}) {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image4}
+            src={singlePro.images.image4}
             alt="image-4"
             className="w-full h-[450px] object-cover rounded"
           />
@@ -130,7 +130,7 @@ export default function ThumbsGallery({singlePro}) {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={singlePro.image6}
+            src={singlePro.images.image6}
             alt="thumb-5"
             className="w-full h-20 object-cover rounded cursor-pointer"
           />
