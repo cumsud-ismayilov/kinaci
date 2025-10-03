@@ -147,7 +147,7 @@ function ProductCardDetail() {
                     </p>
                   </div>
                   <div className="flex flex-col gap-[13px]">
-                    <p className="text-[14px]">Mərtəbə: {singlePro.floor}</p>
+                    <p className="text-[14px]">Mərtəbə: {singlePro.floor ?? "-"}</p>
                     <p className="text-[14px]">
                       Əməliyyat növü: {singlePro.transactionType}
                     </p>
@@ -169,38 +169,16 @@ function ProductCardDetail() {
                 </div>
               </div>
               <div className="bg-[#eaf3f9] p-[12px_12px] mt-[3rem] mb-[3rem] ml-[8px] mr-[8px]">
-                <h4 className="text-[20px]">Altyapı</h4>
+                <h4 className="text-[20px]">İnfrastruktur</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  <div className="flex flex-col gap-[13px]">
-                    <p className="text-[#ed6b2c]">{singlePro.location}</p>
-                    <p className="text-[14px]">
-                      Mülk Tipi: {singlePro.propertyType}
-                    </p>
-                    <p className="text-[14px]">Otaq: {singlePro.rooms}</p>
-                    <p className="text-[14px]">
-                      Dənizlə məsafə: {singlePro.distanceOfSea}
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-[13px]">
-                    <p className="text-[14px]">Mərtəbə: {singlePro.floor}</p>
-                    <p className="text-[14px]">
-                      Əməliyyat növü: {singlePro.transactionType}
-                    </p>
-                    <p className="tetx-[14px]">
-                      Hamam otağı: {singlePro.baths ?? " -"}
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-[13px]">
-                    <p className="text-[14px]">
-                      Vətəndaşlıq çərçivəsində: {singlePro.citizenship}
-                    </p>
-                    <p className="text-[14px]">
-                      Yatırım Amaçlı: {singlePro.investment}
-                    </p>
-                    <p className="text-[14px]">
-                      Oturma izni çərçivəsində: {singlePro.residencePermit}
-                    </p>
-                  </div>
+                  {singlePro?.infrastructure?.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 p-2"
+                    >
+                      <span className="text-[#052841] text-[14px]">- {item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="grid grid-cols-3 p-[16px] gap-[10px]">

@@ -82,7 +82,7 @@ function CardListView({data}) {
               <div className="flex justify-between mb-[10px]">
                 <div className="flex items-center gap-[6px]">
                   <Bath />
-                  <p>{item.baths}</p>
+                  <p>{item.baths ?? "-"}</p>
                 </div>
                 <button className="bg-[#2582C1] text-[#fff] p-[9px_16px] rounded-[6px] text-[13px]">
                   {item.price}

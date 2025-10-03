@@ -49,7 +49,7 @@ const { favorites, setFavorites } = useContext(FavoriteContext);
           <div className="flex items-center gap-[8px]"><HomeArea /><p>{size}</p></div>
         </div>
         <div className="flex justify-between mb-[10px]">
-          <div className="flex items-center gap-[6px]"><Bath /><p>{baths}</p></div>
+          <div className="flex items-center gap-[6px]"><Bath /><p>{baths ?? "-"}</p></div>
           <button className="bg-[#2582C1] text-[#fff] p-[6px_9px] rounded-[6px] text-[13px]">{price}</button>
         </div>
         <div className="flex justify-between">
@@ -60,5 +60,7 @@ const { favorites, setFavorites } = useContext(FavoriteContext);
     </div>
   );
 }
+
+// {singlePro.baths ?? " -"}
 
 export default ProductCard;
