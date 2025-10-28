@@ -1,4 +1,5 @@
 import BackGroundSec from "../../components/backgroundSec";
+import SearchFilter from "../../components/searchFilter/searchFilter";
 import BankAccountSec from "./bankAccountSec";
 import GoogleMapSec from "./googleMapSec";
 import OfficeSec from "./officeSec";
@@ -8,6 +9,7 @@ function Contact() {
   return (
     <div>
       <BackGroundSec bgColor="#fdf2ee"></BackGroundSec>
+      <SearchFilter/>
       <GoogleMapSec/>
       <OfficeSec/>
       <div className="p-[3rem_1rem]">
