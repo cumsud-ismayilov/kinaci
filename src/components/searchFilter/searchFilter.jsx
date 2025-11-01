@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchSection() {
+  const navigate = useNavigate();
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
   const [sizeMin, setSizeMin] = useState("");
@@ -20,7 +22,9 @@ export default function SearchSection() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
+
+    // 🔹 URL parametrlərini yarat
+    const params = new URLSearchParams({
       activeTab,
       priceMin,
       priceMax,
@@ -31,7 +35,14 @@ export default function SearchSection() {
       floors,
       propertyId,
     });
-    // API çağırışı burada edilə bilər
+
+    // 🔹 Boş olanları sil
+    for (const [key, value] of params.entries()) {
+      if (!value) params.delete(key);
+    }
+
+    // 🔹 Possessions səhifəsinə yönləndir
+    navigate(`/possessions?${params.toString()}`);
   };
 
   const handleReset = () => {
@@ -48,7 +59,7 @@ export default function SearchSection() {
   };
 
   return (
-    <section className="-mt-[122px] relative max-w-5xl mx-auto">
+    <section className="-mt-[122px] relative max-w-5xl mx-auto z-9999 shadow-[0_7px_29px_#64646f33]">
       <div className="container py-5">
         {/* Tabs */}
         <div className="flex justify-between w-full text-sm relative z-[70] mb-5">

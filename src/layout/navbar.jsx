@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Envelope from "../icons/envelope";
 import Phone from "../icons/phone";
@@ -18,11 +18,17 @@ import { useContext } from "react";
 import { FavoriteContext } from "../context/favoriteContext";
 
 function Navbar() {
+   const location = useLocation();
   const [activeMenu, setActiveMenu] = useState("/");
   const [isEmlakOpen, setIsEmlakOpen] = useState(false);
   const [hoverMenu, setHoverMenu] = useState("/");
   const [isFav, setIsFav] = useState(false);
   const { favorites } = useContext(FavoriteContext);
+
+  useEffect(() => {
+    const path = location.pathname;
+    setActiveMenu(path);
+  }, [location.pathname]);
 
   const hoverLink = (path) =>
     `hover:text-orange-500 text-[15px] font-medium ${
