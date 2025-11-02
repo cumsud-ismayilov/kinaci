@@ -8,6 +8,7 @@ import InputSec from "../about/inputSec";
 import HomeSwipper from "../../components/homeSwipper";
 import { Link } from "react-router";
 import SearchSection from "../../components/searchFilter/searchFilter";
+import AllCitySlider from "../contact/slider/allCitySlider";
 
 function HomePage() {
   const [products, setProducts] = useState([]);
@@ -41,7 +42,24 @@ function HomePage() {
   return (
     <>
       <HomeSwipper />
-      <SearchSection/>
+      <SearchSection />
+      <section className="pt-[4rem] pb-[4rem]">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 pb-[25px]">
+          <div>
+            <h1 className="text-[22px] font-semibold">Ölkələrə görə elanlar</h1>
+            <p className="text-[13px]">İstədiyiniz evləri ölkəyə görə tapa bilərsiniz.</p>
+          </div>
+          <div className="text-end">
+            <button className="bg-[#2582C1] text-[#fff] p-[10px_10px] rounded-[6px] text-[13px]">
+              <Link to="/possessions">Bütün Kampaniyalara Baxın</Link>
+            </button>
+          </div>
+        </div>
+        <div className="max-w-5xl mx-auto">
+        <AllCitySlider/>
+
+        </div>
+      </section>
       <section className="bg-[#E9F2F9] pt-[3rem]">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 pb-[25px]">
           <div>
@@ -142,7 +160,7 @@ function HomePage() {
         </div>
         <div className="max-w-5xl mx-auto flex justify-center pt-[3rem] pb-[3rem]">
           <button className="text-[#ED6B2C] border border-[#ED6B2C] rounded-[5px] p-[6px_40px] text-[15px] cursor-pointer">
-           <Link to="/possessions">Daha Fazla Yükle</Link>
+            <Link to="/possessions">Daha Fazla Yükle</Link>
           </button>
         </div>
       </section>

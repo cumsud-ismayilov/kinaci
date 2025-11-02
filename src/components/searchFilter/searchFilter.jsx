@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
 export default function SearchSection() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export default function SearchSection() {
   const [sizeMax, setSizeMax] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [rooms, setRooms] = useState("");
-  const [floors, setFloors] = useState("");
+  const [floor, setFloor] = useState("");
   const [propertyId, setPropertyId] = useState("");
   const [activeTab, setActiveTab] = useState("all");
   const [showMoreFilters, setShowMoreFilters] = useState(false);
@@ -32,7 +33,7 @@ export default function SearchSection() {
       sizeMax,
       propertyType,
       rooms,
-      floors,
+      floor,
       propertyId,
     });
 
@@ -52,18 +53,18 @@ export default function SearchSection() {
     setSizeMax("");
     setPropertyType("");
     setRooms("");
-    setFloors("");
+    setFloor("");
     setPropertyId("");
     setActiveTab("all");
     setShowMoreFilters(false);
   };
 
   return (
-    <section className="-mt-[122px] relative max-w-5xl mx-auto z-9999 shadow-[0_7px_29px_#64646f33]">
-      <div className="container py-5">
+    <section className="-mt-[122px]  max-w-5xl mx-auto  shadow-[0_7px_29px_#64646f33]">
+      <div className="container ">
         {/* Tabs */}
-        <div className="flex justify-between w-full text-sm relative z-[70] mb-5">
-          <div className="tab-btns text-blue-900 font-semibold text-md flex rounded-t-selectBtn overflow-hidden relative">
+        <div className="flex justify-between w-full text-sm ">
+          <div className="tab-btns text-blue-900 font-semibold text-md flex rounded-t-[12px] overflow-hidden relative z-[9999]">
             {tabs.map((tab) => (
               <button
                 key={tab.value}
@@ -90,13 +91,16 @@ export default function SearchSection() {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none"
+          className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none relative z-[9999]"
         >
           <div className="flex gap-3 flex-wrap">
             <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">
               {/* Qiymət */}
               <div className="grid gap-3">
-                <label htmlFor="price" className="cursor-default text-sm mb-3 inline-block">
+                <label
+                  htmlFor="price"
+                  className="cursor-default text-sm mb-3 inline-block"
+                >
                   Qiymət
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -119,7 +123,10 @@ export default function SearchSection() {
 
               {/* Ölçü */}
               <div className="grid gap-3">
-                <label htmlFor="size" className="cursor-default text-sm mb-3 inline-block">
+                <label
+                  htmlFor="size"
+                  className="cursor-default text-sm mb-3 inline-block"
+                >
                   Ölçü (m<sup>2</sup>)
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -153,8 +160,8 @@ export default function SearchSection() {
                     className="px-2.5 py-2 border border-blue-900/25 rounded-button w-full text-sm"
                   >
                     <option value="">Seçin</option>
-                    <option value="menzil">Mənzil</option>
-                    <option value="villa">Villa</option>
+                    <option value="Mənzillər">Mənzillər</option>
+                    <option value="Villalar">Villalar</option>
                     <option value="obyekt">Obyekt</option>
                   </select>
                 </div>
@@ -168,10 +175,10 @@ export default function SearchSection() {
                     className="px-2.5 py-2 border border-blue-900/25 rounded-button w-full text-sm"
                   >
                     <option value="">Seçin</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4+">4+</option>
+                    <option value="1+1">1+1</option>
+                    <option value="2+1">2+1</option>
+                    <option value="3+1">3+1</option>
+                    <option value="4+1">4+1</option>
                   </select>
                 </div>
 
@@ -179,8 +186,8 @@ export default function SearchSection() {
                 <div className="grid gap-1">
                   <label className="text-sm">Mərtəbələrin sayı</label>
                   <select
-                    value={floors}
-                    onChange={(e) => setFloors(e.target.value)}
+                    value={floor}
+                    onChange={(e) => setFloor(e.target.value)}
                     className="px-2.5 py-2 border border-blue-900/25 rounded-button w-full text-sm"
                   >
                     <option value="">Seçin</option>
@@ -210,19 +217,22 @@ export default function SearchSection() {
             <div className="flex text-xs gap-2.5 py-2">
               <button
                 type="button"
-                className="gap-[6px] flex items-center"
-                onClick={() => setShowMoreFilters(prev => !prev)}
+                className="gap-[6px] flex items-center hover:text-orange-500 transition-colors"
+                onClick={() => setShowMoreFilters((prev) => !prev)}
               >
+                <SlidersHorizontal className="w-4 h-4" />
                 Daha çox filtr
               </button>
               <button
                 type="button"
-                className="gap-[6px] text-blue-900/50 hover:bg-blue-900/5 rounded px-2 flex items-center"
+                className="gap-[6px] text-blue-900/50 hover:text-orange-500 hover:bg-blue-900/5 rounded px-2 flex items-center transition-colors"
                 onClick={handleReset}
               >
+                <RotateCcw className="w-4 h-4" />
                 Hamısını sıfırla
               </button>
             </div>
+
             <div className="text-md">
               <button
                 type="submit"

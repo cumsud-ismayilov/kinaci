@@ -7,6 +7,8 @@ import CardGridView from "../../components/cardGridView";
 import CardListView from "../../components/cardListView";
 import { getAllCompanies } from "../../services";
 import Pagination from "../../components/pagination/pagination";
+import { Player } from "@lottiefiles/react-lottie-player";
+import emptyAnimation from "../../animations/empty.json"; // Lottie JSON
 
 function Possessions() {
   const [view, setView] = useState("grid");
@@ -53,8 +55,16 @@ function Possessions() {
     const sizeMax = queryParams.get("sizeMax");
     const propertyType = queryParams.get("propertyType");
     const rooms = queryParams.get("rooms");
-    const floors = queryParams.get("floors");
+    const floor = queryParams.get("floor");
     const propertyId = queryParams.get("propertyId");
+
+    const cityParam = queryParams.get("city");
+
+    if (cityParam) {
+      filtered = filtered.filter(
+        (p) => p.city?.toLowerCase() === cityParam.toLowerCase()
+      );
+    }
 
     // Əmlak növü (satılır / icarə)
     if (activeTab === "forSale") {
@@ -81,15 +91,19 @@ function Possessions() {
 
     // Əmlak növü
     if (propertyType)
-      filtered = filtered.filter(
-        (p) => p.type?.toLowerCase() === propertyType.toLowerCase()
-      );
+      filtered = filtered.filter((p) => p.propertyType === propertyType);
 
     // Otaq sayı
     if (rooms) filtered = filtered.filter((p) => String(p.rooms) === rooms);
 
     // Mərtəbə sayı
-    if (floors) filtered = filtered.filter((p) => String(p.floors) === floors);
+    if (floor) {
+      console.log("Floor filter:", floor);
+      filtered = filtered.filter((p) => {
+        if (floor === "3+") return Number(p.floor) >= 3;
+        return Number(p.floor) === Number(floor);
+      });
+    }
 
     // ID
     if (propertyId)
@@ -179,17 +193,33 @@ function Possessions() {
           </div>
         </div>
 
-        {view === "grid" ? (
-          <CardGridView data={paginatedData} />
+        {paginatedData.length === 0 ? (
+          <div className="flex flex-col justify-center items-center py-20">
+            <Player
+              autoplay
+              loop
+              src={emptyAnimation}
+              style={{ height: "300px", width: "300px" }}
+            />
+            <p className="text-gray-500 mt-5 text-lg">
+              Heç bir nəticə tapılmadı!
+            </p>
+          </div>
         ) : (
-          <CardListView data={paginatedData} />
-        )}
+          <>
+            {view === "grid" ? (
+              <CardGridView data={paginatedData} />
+            ) : (
+              <CardListView data={paginatedData} />
+            )}
 
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={(page) => setCurrentPage(page)}
+            />
+          </>
+        )}
       </div>
       <PrintSec />
     </>
