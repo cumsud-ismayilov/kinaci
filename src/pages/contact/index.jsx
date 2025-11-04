@@ -7,16 +7,25 @@ import Slider from "./slider";
 
 function Contact() {
   return (
-    <div>
-      <BackGroundSec bgColor="#fdf2ee"></BackGroundSec>
-      <SearchFilter/>
-      <GoogleMapSec/>
-      <OfficeSec/>
-      <div className="p-[3rem_1rem]">
-        <Slider />
+    <div className="relative z-[0]">
+      {/* Background və filter birlikdə */}
+      <div className="relative overflow-visible z-[1]">
+        <BackGroundSec bgColor="#fdf2ee" />
+        <div className="absolute top-[44px] left-1/2 -translate-x-1/2 w-full max-w-5xl z-[50]">
+          <SearchFilter />
+        </div>
       </div>
-      <div className="bg-[#E9F3F9] p-[3rem]">
-        <BankAccountSec />
+
+      {/* Map və digər hissələr */}
+      <div className="relative z-[0]">
+        <GoogleMapSec />
+        <OfficeSec />
+        <div className="p-[3rem_1rem]">
+          <Slider />
+        </div>
+        <div className="bg-[#E9F3F9] p-[3rem]">
+          <BankAccountSec />
+        </div>
       </div>
     </div>
   );

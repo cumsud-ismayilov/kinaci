@@ -18,16 +18,28 @@ function HomePage() {
   const [activeFilter, setActiveFilter] = useState("Satışda");
 
   // Products yüklə
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const data = await getAllCompanies();
+  //       setProducts(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, [up]);
   useEffect(() => {
-    (async () => {
-      try {
+    const cached = localStorage.getItem("products");
+    if (cached) {
+      setProducts(JSON.parse(cached));
+    } else {
+      (async () => {
         const data = await getAllCompanies();
         setProducts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [up]);
+        localStorage.setItem("products", JSON.stringify(data));
+      })();
+    }
+  }, []);
 
   useEffect(() => {
     if (activeFilter === "Hamısı") {
@@ -42,22 +54,23 @@ function HomePage() {
   return (
     <>
       <HomeSwipper />
-      <SearchSection />
+      <SearchSection className="-mt-[122px]" />
       <section className="pt-[4rem] pb-[4rem]">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 pb-[25px]">
           <div>
             <h1 className="text-[22px] font-semibold">Ölkələrə görə elanlar</h1>
-            <p className="text-[13px]">İstədiyiniz evləri ölkəyə görə tapa bilərsiniz.</p>
+            <p className="text-[13px]">
+              İstədiyiniz evləri ölkəyə görə tapa bilərsiniz.
+            </p>
           </div>
           <div className="text-end">
             <button className="bg-[#2582C1] text-[#fff] p-[10px_10px] rounded-[6px] text-[13px]">
-              <Link to="/possessions">Bütün Kampaniyalara Baxın</Link>
+              <Link to="/possessions">Bütün Ölkələri Gör</Link>
             </button>
           </div>
         </div>
         <div className="max-w-5xl mx-auto">
-        <AllCitySlider/>
-
+          <AllCitySlider />
         </div>
       </section>
       <section className="bg-[#E9F2F9] pt-[3rem]">

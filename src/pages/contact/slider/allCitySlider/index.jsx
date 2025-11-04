@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const cities = [
   { name: "Antalya", img: "/src/assets/div.item.png" },
-  { name: "Istanbul", img: "/src/assets/div.item (1).png" },
+  { name: "İstanbul", img: "/src/assets/div.item (1).png" },
   { name: "Izmir", img: "/src/assets/div.item (2).png" },
   { name: "Ankara", img: "/src/assets/ankara.png.png" },
   { name: "Edirne", img: "/src/assets/edirne.png.png" },

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
-export default function SearchSection() {
+export default function SearchSection({ className = "" }) {
   const navigate = useNavigate();
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
@@ -60,7 +60,7 @@ export default function SearchSection() {
   };
 
   return (
-    <section className="-mt-[122px]  max-w-5xl mx-auto  shadow-[0_7px_29px_#64646f33]">
+    <section className={`max-w-5xl mx-auto  ${className}`}>
       <div className="container ">
         {/* Tabs */}
         <div className="flex justify-between w-full text-sm ">
@@ -86,12 +86,16 @@ export default function SearchSection() {
               }}
             ></div>
           </div>
+          <div className="my-auto relative z-[9999]">
+            <button className="text-[#fff] bg-[#0D9488] p-[6px_12px] rounded-[6px]"><Link to="/onlineTour">Bilik Turuna başla</Link></button>
+            <button className="text-[#fff] bg-[#2563EB] p-[6px_12px] rounded-[6px] ml-[6px]"><Link>Axtarış tələb edin</Link></button>
+          </div>
         </div>
 
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none relative z-[9999]"
+          className="text-blue-900 py-5 px-4 w-full bg-white shadow-filter-box rounded-[12px] rounded-tl-none relative z-[9999] shadow-[0_7px_29px_#64646f33]"
         >
           <div className="flex gap-3 flex-wrap">
             <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-3 flex-wrap">

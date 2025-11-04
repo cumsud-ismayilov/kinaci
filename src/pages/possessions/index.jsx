@@ -6,6 +6,7 @@ import { FaThLarge, FaList } from "react-icons/fa";
 import CardGridView from "../../components/cardGridView";
 import CardListView from "../../components/cardListView";
 import { getAllCompanies } from "../../services";
+import SearchFilter from "../../components/searchFilter/searchFilter";
 import Pagination from "../../components/pagination/pagination";
 import { Player } from "@lottiefiles/react-lottie-player";
 import emptyAnimation from "../../animations/empty.json"; // Lottie JSON
@@ -154,9 +155,15 @@ function Possessions() {
   }, [filteredProducts]);
 
   // 🔹 Render hissə
+
   return (
     <>
-      <BackGroundSec bgColor="#052841"></BackGroundSec>
+      <div className="relative overflow-visible z-[1]">
+        <BackGroundSec bgColor="#052841" />
+        <div className="absolute top-[44px] left-1/2 -translate-x-1/2 w-full max-w-5xl z-[50]">
+          <SearchFilter />
+        </div>
+      </div>
       <div className="bg-[#F7F7F7] pt-[3rem]">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 pb-[25px]">
           <h1 className="text-2xl font-bold">Türkiye'de Gayrimenkul</h1>

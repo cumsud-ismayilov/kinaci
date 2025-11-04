@@ -1,11 +1,17 @@
 import PrintSec from "../../components/prinntSec";
 import BackGroundSec from "../../components/backgroundSec";
 import FreePropertyImg from "../../assets/freeProperty.jpg";
+import SearchFilter from "../../components/searchFilter/searchFilter";
 
 function SalesServices() {
   return (
     <div>
-      <BackGroundSec bgColor="#fdf2ee"></BackGroundSec>
+      <div className="relative overflow-visible z-[1]">
+        <BackGroundSec bgColor="#fdf2ee" />
+        <div className="absolute top-[44px] left-1/2 -translate-x-1/2 w-full max-w-5xl z-[50]">
+          <SearchFilter />
+        </div>
+      </div>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-1 items-center gap-6 m-[50px_0px]">
         <h2 className="text-[28px] font-semibold">Satış sonrası xidmət</h2>
         <div
