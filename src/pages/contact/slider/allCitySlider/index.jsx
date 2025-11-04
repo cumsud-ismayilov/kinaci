@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 // 🔹 Şəkilləri birbaşa import edirik:
 import Antalya from "../../../../assets/div-item.png";
-import Istanbul from "../../../../assets/div.item (1).png";
-import Izmir from "../../../../assets/div.item (2).png";
+import Istanbul from "../../../../assets/div-item-1.png";
+import Izmir from "../../../../assets/div-item-2.png";
 import Ankara from "../../../../assets/ankara.png.png";
 import Edirne from "../../../../assets/edirne.png.png";
 import Tekirdag from "../../../../assets/tekirdağ.png.png";
