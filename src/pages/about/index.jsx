@@ -7,13 +7,17 @@ import OurGroup from "./ourGroup";
 import BestForYou from "./bestForYou";
 import InputSec from "./inputSec";
 import Certificate from "./cerficateSec";
+import SearchFilter from "../../components/searchFilter/searchFilter";
 
 function About() {
   return (
     <>
-      <BackGroundSec bgColor="#fdf2ee">
-        <h1>salam</h1>
-      </BackGroundSec>
+      <div className="relative overflow-visible z-[1]">
+        <BackGroundSec bgColor="#fdf2ee" />
+        <div className="absolute top-[44px] left-1/2 -translate-x-1/2 w-full max-w-5xl z-[50]">
+          <SearchFilter />
+        </div>
+      </div>
       <div className="img-banner w-full h-[370px] bg-no-repeat bg-cover">
         <img className="w-full h-full " src={BackImg1} alt="Imgbanner" />
       </div>
