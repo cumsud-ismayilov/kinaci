@@ -16,13 +16,15 @@ import Upchewron from "../icons/upchewron";
 import FavoriteModal from "../components/favouriteModal";
 import { useContext } from "react";
 import { FavoriteContext } from "../context/favoriteContext";
+import AuthModal from "../components/loginAndregister/";
 
 function Navbar() {
-   const location = useLocation();
+  const location = useLocation();
   const [activeMenu, setActiveMenu] = useState("/");
   const [isEmlakOpen, setIsEmlakOpen] = useState(false);
   const [hoverMenu, setHoverMenu] = useState("/");
   const [isFav, setIsFav] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const { favorites } = useContext(FavoriteContext);
 
   useEffect(() => {
@@ -42,6 +44,7 @@ function Navbar() {
     }`;
 
   return (
+<>
     <header>
       <div className="navTop bg-blue-50 flex justify-between px-44 py-2.5">
         <div className="headerLeft flex gap-[10px]">
@@ -55,10 +58,13 @@ function Navbar() {
               <Phone /> +90(544) 138 07 07
             </Link>
           </button>
-          <button className="bg-white text-[#ED6B2C] border border-[#ED6B2C] rounded-[5px] p-[6px_8px]">
-            <Link className="flex justify-center items-center gap-[5px] text-[14px] font-semibold leading-[14px]">
+          <button
+            onClick={() => setIsAuthOpen(true)}
+            className="bg-white text-[#ED6B2C] border border-[#ED6B2C] rounded-[5px] p-[6px_8px]"
+          >
+            <span className="flex justify-center items-center gap-[5px] text-[14px] font-semibold leading-[14px] cursor-pointer">
               <Include /> Daxil ol
-            </Link>
+            </span>
           </button>
         </div>
         <div className="headerRight flex gap-[10px] relative">
@@ -112,26 +118,25 @@ function Navbar() {
                   >
                     Satılır
                   </Link>
-
                 </li>
-                                  <li>
-                    <Link
-                      to="forRent"
-                      className={`${hoverLink("/forRent")}`}
-                      onClick={() => setHoverMenu("/forRent")}
-                    >
-                      Kirayə
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="soldPossessions"
-                      className={`${hoverLink("/soldPossessions")}`}
-                      onClick={() => setHoverMenu("/soldPossessions")}
-                    >
-                      Satılmış Əmlak
-                    </Link>
-                  </li>
+                <li>
+                  <Link
+                    to="forRent"
+                    className={`${hoverLink("/forRent")}`}
+                    onClick={() => setHoverMenu("/forRent")}
+                  >
+                    Kirayə
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="soldPossessions"
+                    className={`${hoverLink("/soldPossessions")}`}
+                    onClick={() => setHoverMenu("/soldPossessions")}
+                  >
+                    Satılmış Əmlak
+                  </Link>
+                </li>
               </ul>
             </li>
 
@@ -283,6 +288,9 @@ function Navbar() {
         </div>
       </nav>
     </header>
+    {isAuthOpen && <AuthModal closeModal={() => setIsAuthOpen(false)} />}
+</>
+    
   );
 }
 
